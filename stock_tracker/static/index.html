@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buy Zone Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div>
+        <h1>Buy Zone Tracker</h1>
+        <p class="sub">Watchlist scored for pullbacks, momentum turns, structure, and volume — not a buy list.</p>
+      </div>
+      <form id="add-form" class="add">
+        <input id="ticker-input" type="text" placeholder="Add ticker  ·  RELIANCE  or  AAPL" autocomplete="off" />
+        <button type="submit">Add</button>
+      </form>
+      <button id="refresh" type="button" class="ghost">Refresh</button>
+    </header>
+
+    <section class="kpis" id="kpis"></section>
+    <p id="status" class="status"></p>
+
+    <div class="layout">
+      <main>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Ticker</th>
+                <th>Zone</th>
+                <th class="num">Score</th>
+                <th class="num">Price</th>
+                <th class="num">1D</th>
+                <th class="num">RSI</th>
+                <th>Setup</th>
+                <th>Buy band</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </main>
+
+      <aside id="detail" class="detail hidden">
+        <div class="detail-head">
+          <div>
+            <h2 id="d-symbol"></h2>
+            <p id="d-name"></p>
+          </div>
+          <button id="close-detail" type="button" class="ghost">Close</button>
+        </div>
+        <div class="score-row">
+          <div>
+            <div class="score-big" id="d-score"></div>
+            <div class="zone-pill" id="d-zone"></div>
+          </div>
+          <div class="band" id="d-band"></div>
+        </div>
+        <svg id="chart" viewBox="0 0 640 280" preserveAspectRatio="none"></svg>
+        <svg id="rsi-chart" viewBox="0 0 640 70" preserveAspectRatio="none"></svg>
+        <div class="bars" id="d-bars"></div>
+        <h3>Why this zone</h3>
+        <ul id="d-signals"></ul>
+        <div class="grid2" id="d-tech"></div>
+      </aside>
+    </div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
